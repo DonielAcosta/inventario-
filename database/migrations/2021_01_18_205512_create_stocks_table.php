@@ -14,14 +14,13 @@ class CreateStocksTable extends Migration
     public function up()
     {
         Schema::create('stocks', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->unsignedBigInteger('id_product');
             $table->foreign('id_product')->references('id')->on('products')->onDelete('cascade');
             $table->unsignedBigInteger('id_sub_stock');
             $table->foreign('id_sub_stock')->references('id')->on('sub__stocks')->onDelete('cascade');
             $table->string('observation',150);
-            $table->integer('quantity',150);
-            
+            $table->integer('quantity');
         });
     }
 

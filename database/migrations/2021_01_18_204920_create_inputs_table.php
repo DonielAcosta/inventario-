@@ -14,17 +14,11 @@ class CreateInputsTable extends Migration
     public function up()
     {
         Schema::create('inputs', function (Blueprint $table) {
-            //$table->increments('id');
             $table->id();
-            //$table->unsignedBigInteger('id_user');
-            //$table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('user_id')->constrained('users');
-
-            //$table->unsignedBigInteger('id_supplier');
-            //$table->foreign('id_supplier')->references('id')->on('suppliers');
-
-            $table->foreign('supplier_id')->constrained('suppliers');
-
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('id_supplier');
+            $table->foreign('id_supplier')->references('id')->on('suppliers')->onDelete('cascade');
             $table->date("date");
             $table->integer('whole');
             $table->integer('n_invoice');

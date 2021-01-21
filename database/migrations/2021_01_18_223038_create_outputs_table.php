@@ -14,12 +14,12 @@ class CreateOutputsTable extends Migration
     public function up()
     {
         Schema::create('outputs', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('id_stock');
             $table->foreign('id_stock')->references('id')->on('stocks')->onDelete('cascade');
-            $table->integer('quantity',150);
+            $table->integer('quantity');
             $table->string('observation',150);
             $table->date("date");
         });

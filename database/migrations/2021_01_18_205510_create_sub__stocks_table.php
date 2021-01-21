@@ -14,13 +14,13 @@ class CreateSubStocksTable extends Migration
     public function up()
     {
         Schema::create('sub__stocks', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->unsignedBigInteger('id_warehouse');
             $table->foreign('id_warehouse')->references('id')->on('warehouses')->onDelete('cascade');
             $table->string('name',30);
             $table->string('decription',30);
             $table->date("date");
-            $table->string('quantity',150);
+            $table->integer('quantity');
 
 
         });
