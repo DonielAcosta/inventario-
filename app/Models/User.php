@@ -16,10 +16,9 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $table="users";
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'name', 'email', 'password', 'last_name', 'type'
     ];
 
     /**
@@ -40,4 +39,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function input(){
+        return $this->belongsTo("App\Models\Input","id_input");
+        }
+    public function output(){
+        return $this->belongsTo("App\Models\Output","id_output");
+    }
+    public $timestamps = false;
 }
