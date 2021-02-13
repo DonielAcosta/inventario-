@@ -31,8 +31,6 @@
 		<a class="dropdown-item" href="#">Forgot password?</a>
 	</div>
 	
-
-
 		{{-- <div class="row">
 			<div class="col-xl-126">
 				<form action="{{route('Login.index')}}" method="get">

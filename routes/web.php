@@ -36,7 +36,14 @@ Route::resource('/Supplier',SupplierController::class);
 Route::resource('/Input',InputController::class);
 Route::resource('/Transaction',TransactionController::class);
 Route::resource('/Output',OutputController::class);
-// Route::resource('/Login',AuthController::class);
+
+// // Route::get('Template', function () {
+// //    return View::make('Template'); 
+// });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
