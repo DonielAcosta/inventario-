@@ -23,10 +23,6 @@ use App\Http\Controllers\OutputController;
 |
 */
 
-Route::get('/', function (){
-    return view('welcome');
-});
-
 Route::resource('/Category',CategoryController::class);
 Route::resource('/Stock',StockController::class);
 Route::resource('/Sub_Stock',SubstockController::class);
@@ -38,17 +34,17 @@ Route::resource('/Transaction',TransactionController::class);
 Route::resource('/Output',OutputController::class);
 
 // // Route::get('Template', function () {
-// //    return View::make('Template'); 
+// //    return View::make('Template');
 // });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
