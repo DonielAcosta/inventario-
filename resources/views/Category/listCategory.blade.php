@@ -13,10 +13,10 @@
 							
 						</div>
 						<div class="col-auto my-1">
-							<input type="submit" class="btn btn-primary" value="Buscar" >	
+							<input type="submit" class="btn btn-info" value="Buscar" >	
 						</div>
 						<div class="col-auto my-1">
-							<a href="{{route('Category.create')}}" class="btn btn-success">Nuevo</a>
+							<a href="{{route('Category.create')}}" class="btn btn-warning">Nuevo</a>
 						</div>
 					</div>
 				</form>
@@ -26,9 +26,8 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th>Id</th>
 								<th>Nombre</th>
-								<th>Descripcion</th>
+								<th>Descripción</th>
 								<th>Opciones</th>
 								
 							</tr>
@@ -36,16 +35,15 @@
 						<tbody>
 						@if(count($Category)<=0)
 						<tr>
-							<td colspan="4"> No hay resultados</td>
+							<td colspan="3"> No hay resultados</td>
 						</tr>
 						@else
 						@foreach($Category as $item)
 							<tr>
-								<td>{{$item->id}}</td>
 								<td>{{$item->name}}</td>
 								<td>{{$item->description}}</td>
-								<td><a href="{{route("Category.edit","$item->id")}}"Class= "btn btn-warning btn-sm">Editar</a>
-								<button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" 
+								<td><a href="{{route("Category.edit","$item->id")}}" Class= "btn btn-info">Editar</a>
+								<button type="button" class="btn btn-danger"  data-bs-toggle="modal" 
 								data-bs-target="#modal-delete-{{$item->id}}">
 									Eliminar
 								</button>

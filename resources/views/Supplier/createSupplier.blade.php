@@ -21,7 +21,7 @@
 					<input type="text" class="form-control" name="email" required maxlength="150">
 				</div>
 				<div class="form-group">
-					<label for="phone">Telefono</label>
+					<label for="phone">Teléfono</label>
 					<input type="text" class="form-control" name="phone" required maxlength="150">
 				</div>
 				<div class="form-group">
@@ -30,8 +30,8 @@
 				</div>
 
 				<div class="form-group">
-					<input type="submit" class="btn btn-primary" value="Guardar">
-					<a href="javascript:history.back()">Ir al listado</a>
+					<input button type="button" class="btn btn-info" value="Guardar" >
+					<a href="javascript:history.back()">Ir al Listado</a>
 				</div>
 			</form>	
 			</div>

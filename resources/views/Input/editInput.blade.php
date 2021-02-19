@@ -1,6 +1,6 @@
 @extends("Templade.Templade")
 
-@section("title","Editar")
+@section("title","Editar  ")
 
 @section("body")
 <h4> Editar </h4>
@@ -11,15 +11,15 @@
 				@method("PUT")
 				<div class="form-group">
 					<label for="whole">Total</label>
-					<input type="text" class="form-control" name="whole" required maxlength="50" >
+					<input type="text" class="form-control" name="whole" required maxlength="50" value="{{$Input->whole}}">
 				</div>
 				<div class="form-group">
 					<label for="date">Fecha</label>
-					<input type="text" class="form-control " name="date" required maxlength="50">
+					<input type="date" class="form-control" name="date" class="datepicker" data-date-format="mm/dd/yyyy" required maxlength="50" value="{{$Input->date}}">
 				</div>
 				<div class="form-group">
 					<label for="n_invoice"> Numero de Factura</label>
-					<input type="text" class="form-control " name="n_invoice" required maxlength="50">
+					<input type="text" class="form-control " name="n_invoice" required maxlength="50" value="{{$Input->n_invoice}}">
 				</div>
 				<div class="form-group">
 					<label for="id_supplier">Proveedor</label>
@@ -42,7 +42,7 @@
 					
 				</div>
 				<div class="form-group">
-					<input type="submit" class="btn btn-primary" value="Guardar">
+					<input type="submit" class="btn btn-info" value="Guardar">
 
 					<a href="javascript:history.back()">Ir al listado</a>
 				</div>

@@ -1,6 +1,6 @@
 @extends("Templade.Templade")
 
-@section("title","Create Sub_Stock")
+@section("title","Sub Almacén ")
 
 @section("body")
 <h4> Entradas</h4>
@@ -17,11 +17,11 @@
 					<input type="text" class="form-control " name="decription" required maxlength="50">
 				</div>
 				<div class="form-group">
-					<label for="date">Fecha</label>
-					<input type="text" class="form-control " name="date" required maxlength="50">
+					<label for="date" >Fecha</label>
+					<input type="date" class="form-control" name="date" class="datepicker" data-date-format="mm/dd/yyyy" required maxlength="50">
 				</div>
 				<div class="form-group">
-					<label for="id_warehouse">Inve Depos </label>
+					<label for="id_warehouse">Inventario Deposito </label>
 					<select name="id_warehouse" id="id_warehouse" class="form-select" aria-label="Default select example" >
 						
 						@foreach ($Warehouse as $ware)
@@ -30,7 +30,7 @@
 					</select>	
 				</div>
 				<div class="form-group">
-					<input type="submit" class="btn btn-primary" value="Guardar">
+					<input type="submit" class="btn btn-info" value="Guardar">
 					<a href="javascript:history.back()">Ir al listado</a>
 				</div>
 			</form>	

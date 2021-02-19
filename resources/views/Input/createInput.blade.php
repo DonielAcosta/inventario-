@@ -12,9 +12,11 @@
 					<label for="whole">Total</label>
 					<input type="text" class="form-control" name="whole" required maxlength="50">
 				</div>
+
 				<div class="form-group">
-					<label for="date">Fecha</label>
-					<input type="text" class="form-control " name="date" required maxlength="50">
+					
+					<label for="date" >Fecha</label>
+					<input type="date" class="form-control" name="date" class="datepicker" data-date-format="mm/dd/yyyy" required maxlength="50">
 				</div>
 				<div class="form-group">
 					<label for="n_invoice"> Numero de Factura</label>

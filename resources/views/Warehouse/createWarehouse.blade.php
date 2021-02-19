@@ -1,6 +1,6 @@
 @extends("Templade.Templade")
 
-@section("title","Create Warehouse")
+@section("title","Almacén  Deposito")
 
 @section("body")
 <h4> Entradas</h4>
@@ -17,7 +17,7 @@
 					<input type="text" class="form-control " name="quantity" required maxlength="50">
 				</div>
 				<div class="form-group">
-					<input type="submit" class="btn btn-primary" value="Guardar">
+					<input type="submit" class="btn btn-info" value="Guardar">
 					<a href="javascript:history.back()">Ir al listado</a>
 				</div>
 			</form>	

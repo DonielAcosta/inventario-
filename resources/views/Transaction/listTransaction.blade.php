@@ -1,9 +1,9 @@
 @extends("Templade.Templade")
 
-@section("title","Transaction")
+@section("title","Transacción")
 
 @section("body")
-<h3>Transaction</h3>
+<h3>Transacción</h3>
 		<div class="row">
 			<div class="col-xl-126">
 				<form action="{{route('Transaction.index')}}" method="get">
@@ -13,10 +13,10 @@
 							{{-- value="{{$texto}}" --}}
 						</div>
 						<div class="col-auto my-1">
-							<input type="submit" class="btn btn-primary" value="Buscar" >	
+							<input type="submit" class="btn btn-info" value="Buscar" >	
 						</div>
 						<div class="col-auto my-1">
-							<a href="{{route('Transaction.create')}}" class="btn btn-success">Nuevo</a>
+							<a href="{{route('Transaction.create')}}" class="btn btn-warning">Nuevo</a>
 						</div>
 					</div>
 				</form>
@@ -26,12 +26,11 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th>Id</th>
+								<th>Codigo de Entrada</th>
+								<th>Producto</th>
+								<th>Almacen</th>
 								<th>Cantidad</th>
-								<th>precio</th>
-								<th>id_Producto</th>
-								<th>id_stock</th>
-								<th>id_input</th>
+								<th>Precio</th>
 								<th>Opciones</th>
 								
 							</tr>
@@ -44,15 +43,14 @@
 						@else
 						@foreach($Transaction as $item)
 							<tr>
-								<td>{{$item->id}}</td>
+								<td>{{$item->id_input}}</td>
+								<td>{{$item->product->name}}</td>
+								<td>{{$item->id_stock}}</td>
 								<td>{{$item->quantity}}</td>
 								<td>{{$item->price}}</td>
-								<td>{{$item->id_product}}</td>
-								<td>{{$item->id_stock}}</td>
-								<td>{{$item->id_input}}</td>
 								<td>
-								<a href="{{route('Transaction.edit',$item->id)}}"Class= "btn btn-warning btn-sm">Editar</a>
-								<button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" 
+								<a href="{{route('Transaction.edit',$item->id)}}"Class= "btn btn-info">Editar</a>
+								<button type="button" class="btn btn-danger " data-bs-toggle="modal" 
 								data-bs-target="#modal-delete-{{$item->id}}">
 									Eliminar
 								</button>

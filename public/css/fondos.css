@@ -1,0 +1,28 @@
+body{
+  background-color: #F2F2F2;
+  font-size: 150%
+  
+}
+
+.navbar-light{
+  /*color: #3D64D9;*/
+  background-color: #2438B2;
+  opacity: 1osition-sticky;
+}
+
+.container-fluid{
+	border-color:#FF0000
+}
+
+h1, h2, h3 {
+  background-image: url("imag/duby4.jpg");
+}
+
+.figure{
+	background-image: url(/img/duby4.jpg)
+	background-repeat: no-repeat;
+
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+}

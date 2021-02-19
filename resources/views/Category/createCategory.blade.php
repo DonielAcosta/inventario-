@@ -13,13 +13,12 @@
 					<input type="text" class="form-control" name="name" required maxlength="50">
 				</div>
 				<div class="form-group">
-					<label for="description">description</label>
+					<label for="description">Descripción</label>
 					<input type="text" class="form-control" name="description" required maxlength="150">
 				</div>
 				
 				<div class="form-group">
-					<input type="submit" class="btn btn-primary" value="Guardar">
-					<input type="reset" class="btn btn-default" value="Cancelar">
+					<input type="submit" class="btn btn-info" value="Guardar">
 					<a href="javascript:history.back()">Ir al listado</a>
 				</div>
 			</form>	

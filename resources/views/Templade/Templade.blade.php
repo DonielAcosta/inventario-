@@ -4,23 +4,41 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Inventario- @yield("title")</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+	{{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> --}}
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+
+<link href="/css/modulovertical.css" rel="stylesheet">
+<link href="/css/dashboard.css" rel="stylesheet">
+<link href="/css/fondos.css"rel="stylesheet" >
+<link href="/css/all.css" rel="stylesheet"> <!--load all styles -->
+
+ <style>
+    .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    }
+
+    @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+    }
+</style>
 </head>
 <body>
     @include('Templade.navbar')
-    <div class="container-fluid">
-        <div class="row">
-            @auth
-                @include('Templade.sidebar')
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                    @yield("body")
-                </main>
-            @else
-                @yield("body")
-            @endauth
-        </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    @auth
+        @include('Templade.sidebar')
+    @else
+        @yield("body")
+    @endauth
+    <script src="/js/popper.min.js"></script> 
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/dashboard.js"></script>
 </body>
 </html>

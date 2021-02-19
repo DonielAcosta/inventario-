@@ -1,9 +1,9 @@
 @extends("Templade.Templade")
 
-@section("title","Sub_Stock")
+@section("title","Sub Almacén ")
 
 @section("body")
-<h3>Sub_Stock</h3>
+<h3>Sub Almacén</h3>
 		<div class="row">
 			<div class="col-xl-126">
 				<form action="{{route('Sub_Stock.index')}}" method="get">
@@ -12,10 +12,10 @@
 							<input type="text" class="form-control" name="texto" value="{{$texto}}">
 						</div>
 						<div class="col-auto my-1">
-							<input type="submit" class="btn btn-primary" value="Buscar" >	
+							<input type="submit"  class="btn btn-info" value="Buscar" >	
 						</div>
 						<div class="col-auto my-1">
-							<a href="{{route('Sub_Stock.create')}}" class="btn btn-success">Nuevo</a>
+							<a href="{{route('Sub_Stock.create')}}" class="btn btn-warning"> Nuevo</a>
 						</div>
 					</div>
 				</form>
@@ -25,15 +25,16 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th>Id</th>
 								<th>Nombre</th>
 								<th>Descripcion</th>
+								<th>Almacen</th>
+								<th>Cantidad en Deposito</th>
 								<th>Fecha</th>
-								<th>id_warehouse</th>
 								<th>Opciones</th>
 								
 							</tr>
 						</thead>
+						
 						<tbody>
 						@if(count($Sub_Stock)<=0)
 						<tr>
@@ -42,14 +43,14 @@
 						@else
 						@foreach($Sub_Stock as $item)
 							<tr>
-								<td>{{$item->id}}</td>
 								<td>{{$item->name}}</td>
 								<td>{{$item->decription}}</td>
+								<td>{{$item->warehouse->name}}</td>
+								<td>{{$item->warehouse->quantity}}</td>
 								<td>{{$item->date}}</td>
-								<td>{{$item->id_warehouse}}</td>
 								<td>
-								<a href="{{route('Sub_Stock.edit',$item->id)}}"Class= "btn btn-warning btn-sm">Editar</a>
-								<button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" 
+								<a href="{{route('Sub_Stock.edit',$item->id)}}" Class= "btn btn-info">Editar</a>
+								<button type="button" class="btn btn-danger" data-bs-toggle="modal" 
 								data-bs-target="#modal-delete-{{$item->id}}">
 									Eliminar
 								</button>

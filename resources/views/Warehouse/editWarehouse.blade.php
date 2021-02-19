@@ -1,6 +1,6 @@
 @extends("Templade.Templade")
 
-@section("title","editar Warehouse")
+@section("title","editar ")
 
 @section("body")
 <h4> Editar</h4>
@@ -11,14 +11,14 @@
 				@method("PUT")
 				<div class="form-group">
 					<label for="name">Nombre</label>
-					<input type="text" class="form-control" name="name" required maxlength="50">
+					<input type="text" class="form-control" name="name" required maxlength="50" value="{{$Warehouse->name}}">
 				</div>
 				<div class="form-group">
 					<label for="quantity">Cantidad</label>
-					<input type="text" class="form-control " name="quantity" required maxlength="50">
+					<input type="text" class="form-control " name="quantity" required maxlength="50" value="{{$Warehouse->quantity}}">
 				</div>
 				<div class="form-group">
-					<input type="submit" class="btn btn-primary" value="Guardar">
+					<input type="submit" class="btn btn-info" value="Guardar">
 					<a href="javascript:history.back()">Ir al listado</a>
 				</div>
 			</form>	

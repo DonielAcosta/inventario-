@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -43,7 +44,7 @@ class ProductController extends Controller
         $Categories = Category::all();
         return view('product.create',compact('Categories'));
     }
-
+ 
     /**
      * Store a newly created resource in storage.
      *
@@ -86,9 +87,9 @@ class ProductController extends Controller
     {
 
       $product= product::findOrfail($id);
-      //return  $Product;
+      $Categories = Category::all();
         
-        return view('product.edit',compact('product'));
+        return view('product.edit',compact('product','Categories'));
     }
 
     /**
@@ -123,5 +124,14 @@ class ProductController extends Controller
         $Product->delete();
         return redirect()->route("product.index");
 
+    }
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'decription' => ['required', 'string'],
+            'id_category' => ['number'],
+        ]);
     }
 }

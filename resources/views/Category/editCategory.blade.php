@@ -14,12 +14,12 @@
 					<input type="text" class="form-control" name="name" required maxlength="50" value="{{$Category->name}}"> 
 				</div>
 				<div class="form-group">
-					<label for="description">Descripcion</label>
+					<label for="description">Descripción</label>
 					<input type="text" class="form-control" name="description" required maxlength="150" value="{{$Category->description}}">
 				</div>
+				
 				<div class="form-group">
-					<input type="submit" class="btn btn-primary" value="Guardar">
-					<input type="reset" class="btn btn-primary" value="Cancelar">
+					<input type="submit" class="btn btn-info" value="Guardar">
 					<a href="javascript:history.back()">Ir al listado</a>
 				</div>
 			</form>	

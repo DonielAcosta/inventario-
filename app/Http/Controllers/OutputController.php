@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Output;
 use App\Models\Stock;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class OutputController extends Controller
 {
@@ -115,4 +116,15 @@ class OutputController extends Controller
         $Output->delete();
         return redirect()->route('Output.index');
     }
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'id_user' => ['number'],
+            'id_stock' => ['number'],
+            'quantity' => ['number'],
+            'observation' => ['required', 'string', 'max:255'],
+        ]);
+    }
+
 }

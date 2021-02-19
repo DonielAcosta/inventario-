@@ -7,6 +7,7 @@ use App\Models\Stock;
 use App\Models\Product;
 use App\Models\Sub_Stock;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class StockController extends Controller
 {
@@ -115,5 +116,16 @@ class StockController extends Controller
         $Stock= Stock::findOrfail($id);
         $Stock->delete();
         return redirect()->route('Stock.index');
+    }
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'id_product' => ['number'],
+            'id_sub_stock' => ['number'],
+            'observation' => ['required', 'string'],
+            'quantity' => ['number'],
+            
+        ]);
     }
 }

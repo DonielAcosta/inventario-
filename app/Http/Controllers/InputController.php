@@ -8,6 +8,7 @@ use App\Models\Input;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class InputController extends Controller
 {
@@ -119,5 +120,15 @@ class InputController extends Controller
         $Input= Input::findOrfail($id);
         $Input->delete();
         return redirect()->route('Input.index');
+    }
+
+      protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'id_user' => ['number'],
+            'id_supplier' => ['number'],
+            'whole' => ['number'],
+            'n_invoice' => ['number'],
+        ]);
     }
 }

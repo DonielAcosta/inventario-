@@ -7,6 +7,7 @@ use App\Models\Stock;
 use App\Models\Sub_Stock;
 use App\Models\Warehouse;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class SubstockController extends Controller
 {
@@ -20,7 +21,7 @@ class SubstockController extends Controller
          // $Stock=Stock::all();
         // return $Stock;
         $texto=trim($request->get("texto"));
-        $Sub_Stock= Sub_Stock::paginate(10); 
+        $Sub_Stock= Sub_Stock::with("warehouse")->paginate(10); 
 
        return view('Sub_Stock.listSubstock', compact('Sub_Stock','texto'));
     
@@ -114,4 +115,16 @@ class SubstockController extends Controller
         $Sub_Stock->delete();
         return redirect()->route('Sub_Stock.index');
     }
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'decription' => ['required', 'string'],
+            'id_warehouse' => ['number'],
+
+        ]);
+    }
+
 }
+

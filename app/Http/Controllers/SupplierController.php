@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Supplier;
 use App\Models\Input;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class SupplierController extends Controller
 {
@@ -116,4 +117,16 @@ class SupplierController extends Controller
         $Supplier->delete();
         return redirect()->route("Supplier.index");
     }
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'phone' => ['required', 'string', 'max:15'],
+            'rif' => ['required', 'string', 'max:9'],
+        ]);
+    }
+
 }

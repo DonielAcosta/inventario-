@@ -11,11 +11,11 @@
 				@method("PUT")
 				<div class="form-group">
 					<label for="quantity">Cantidad</label>
-					<input type="text" class="form-control" name="quantity" required maxlength="150">
+					<input type="text" class="form-control" name="quantity" required maxlength="150" value="{{$Stock->quantity}}">
 				</div>
 				<div class="form-group">
-					<label for="observation">observacion</label>
-					<input type="text" class="form-control" name="observation" required maxlength="150">
+					<label for="observation">Observación</label>
+					<input type="text" class="form-control" name="observation" required maxlength="150" value="{{$Stock->observation}}">
 				</div>
 				<div class="form-group">
 					<label for="id_product">Producto</label>
@@ -26,7 +26,7 @@
 					</select>
 				</div>
 				<div class="form-group">
-					<label for="id_sub_stock">Sub almacen</label>
+					<label for="id_sub_stock">Sub Almacén</label>
 					<select name="id_sub_stock" id="id_sub_stock" class="form-select" aria-label="Default select example">
 						@foreach ($Sub_Stock as $substock)
 							<option value="{{ $substock->id }}">{{$substock->name }}
@@ -35,7 +35,7 @@
 					</select>
 				</div>
 				<div class="form-group">
-					<input type="submit" class="btn btn-primary" value="Guardar">
+					<input type="submit" class="btn btn-info" value="Guardar">
 
 					<a href="javascript:history.back()">Ir al listado</a>
 				</div>

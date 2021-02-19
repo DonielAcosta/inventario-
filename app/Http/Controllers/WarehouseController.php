@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Warehouse;
 use App\Models\Sub_Stock;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class WarehouseController extends Controller
 {
@@ -103,6 +104,15 @@ class WarehouseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $Warehouse= Warehouse::findOrfail($id);
+        $Warehouse->delete();
+        return redirect()->route('Warehouse.index');
+    }
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'quantity' => ['number'],
+        ]);
     }
 }

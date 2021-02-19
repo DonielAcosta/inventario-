@@ -1,92 +1,73 @@
-<style>
-    .bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-    }
 
-    @media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-    }
-    }
-</style>
-<link href="dashboard.css" rel="sty4rmnlesheet">
-<!-- columna drecha con todos sus funciones  -->
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-    <div class="position-sticky pt-3">
-    <ul class="nav flex-column">
-        <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">
-            <span data-feather="home"></span>
-            Dashboard
-        </a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link" href="#">
-            <span data-feather="file"></span>
-            Orders
-        </a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link" href="#">
-            <span data-feather="shopping-cart"></span>
-            Products
-        </a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link" href="#">
-            <span data-feather="users"></span>
-            Customers
-        </a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link" href="#">
-            <span data-feather="bar-chart-2"></span>
-            Reports
-        </a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link" href="#">
-            <span data-feather="layers"></span>
-            Integrations
-        </a>
-        </li>
-    </ul>
+<div class="container-fluid">
+  <div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div class="position-sticky pt-3">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="/Supplier">
+                <span class="fa fa-edit"></span>
+                Provedores
+            </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/product">
+                <span class="fas fa-cart-plus" ></span>
+                Productos
+            </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Category">
+                    <span class="fas fa-clipboard-list"></span>
+                         Categoria </a>
 
-    <!--   <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-        <span>Saved reports</span>
-        <a class="link-secondary" href="#" aria-label="Add a new report">
-        <span data-feather="plus-circle"></span>
-        </a>
-    </h6> -->
-    <ul class="nav flex-column mb-2">
-        <li class="nav-item">
-        <a class="nav-link" href="#">
-            <span data-feather="file-text"></span>
-            Current month
-        </a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link" href="#">
-            <span data-feather="file-text"></span>
-            Last quarter
-        </a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link" href="#">
-            <span data-feather="file-text"></span>
-            Social engagement
-        </a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link" href="#">
-            <span data-feather="file-text"></span>
-            Year-end sale
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/Stock">
+                <span class="fas fa-layer-group"></span>
+               Almacén
+            </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/Warehouse">
+                <span class="fas fa-warehouse"></span>
+                 Almacén  Deposito
+                 
+            </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/Sub_Stock">
+                <span class="fas fa-archive"></span>
+                Sub Almacén
+            </a>
+            </li>
+        </ul>
+        <ul class="nav flex-column mb-2">
+            <li class="nav-item">
+                <a class="nav-link" href="/Input">
+            <span class="fas fa-briefcase"></span>
+            Entradas
         </a>
         </li>
-    </ul>
-    </div>
-</nav>
+        <li class="nav-item">
+        <a class="nav-link" href="/Output">
+            <span class="fab fa-fly"></span>
+            Salidas
+        </a>
+        </li>
+     
+        <li class="nav-item">
+        <a class="nav-link" href="/Transaction">
+            <span class="fas fa-wallet"></span>
+            Transacion
+        </a>
+        </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        @yield("body")
+    </main>
+  </div>
+</div>

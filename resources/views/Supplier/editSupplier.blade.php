@@ -22,7 +22,7 @@
 					<input type="text" class="form-control" name="email" required maxlength="150" value="{{$Supplier->email}}">
 				</div>
 				<div class="form-group">
-					<label for="phone">Telefono</label>
+					<label for="phone">Teléfono</label>
 					<input type="text" class="form-control" name="phone" required maxlength="150" value="{{$Supplier->phone}}">
 				</div>
 				<div class="form-group">
@@ -30,7 +30,7 @@
 					<input type="text" class="form-control" name="rif" required maxlength="150" value="{{$Supplier->rif}}">
 				</div>
 				<div class="form-group">
-					<input type="submit" class="btn btn-primary" value="Guardar">
+					<input type="submit" class="btn btn-info" value="Guardar">
 				
 					<a href="javascript:history.back()">Ir al listado</a>
 				</div>
