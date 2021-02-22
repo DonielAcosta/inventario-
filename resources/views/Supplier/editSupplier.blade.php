@@ -11,8 +11,13 @@
 				@method("PUT")
 				<div class="form-group">
 					<label for="name">Nombre</label>
-					<input type="text" class="form-control" name="name" required maxlength="50" value="{{$Supplier->name}}"> 
+					<input type="text" class="form-control" name="name"  id ="name" required maxlength="50" value="{{$Supplier->name}}"> 
+
+					@if ($errors->has('name'))
+						{{ $errors->first('name') }}
+					@endif
 				</div>
+
 				<div class="form-group">
 					<label for="last_name">Apellido</label>
 					<input type="text" class="form-control" name="last_name" required maxlength="150" value="{{$Supplier->last_name}}">

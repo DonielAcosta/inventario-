@@ -30,16 +30,7 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // protected function validator(array $data)
-    // {
-    //     return Validator::make($data, [
-    //         'id_product' => ['numeric'],
-    //         'id_stock' => ['numeric'],
-    //         'id_input' => ['numeric'],
-    //         'quantity' => ['numeric'],
-    //         'price' => ['numeric'],
-    //     ]);
-    // }
+   
     public function create()
     {
         // $Transaction = Transaction::findOrfail($id);
@@ -57,15 +48,7 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        // $Transaction = Transaction::findOrfail($id);
-        // $Transaction = Transaction::findOrfail($id);
-        // $request->validate([
-        //     'id_product' => ['numeric','required'],
-        //     'id_stock' => ['numeric','required'],
-        //     'id_input' => ['numeric','required'],
-        //     'quantity' => ['numeric','required'],
-        //     'price' => ['numeric','required'],
-        // ]);
+        
         $validator = Validator::make($request->all(), [
             'id_product' => ['numeric','required'],
             'id_stock' => ['numeric','required'],
@@ -132,17 +115,7 @@ class TransactionController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    // protected function validator(array $data)
-    // {
-        
-    //     return Validator::make($data, [
-    //         'id_product' => ['numeric','required'],
-    //         'id_stock' => ['numeric','required'],
-    //         'id_input' => ['numeric','required'],
-    //         'quantity' => ['numeric','required'],
-    //         'price' => ['numeric','required'],
-    //     ]);
-    // }
+   
     public function update(Request $request, $id)
     {
 
@@ -155,15 +128,16 @@ class TransactionController extends Controller
             'price' => ['numeric','required'],
         ]);
         // dd($Transaction, $validator->errors());
-        if ($validator->fails()) {
-            // return response()->json([
-            //     'status' => false,
-            //     'message' => 'Ocurrio un error al validar los datos',
-            //     'error' => $validator->errors()
-            // ], 200);
-             return redirect()->back()->withInput()->withErrors($validator->errors());
+       if ($validator->fails()) {
+            return redirect()->back()
+                    ->withInput()
+                    ->withErrors($validator->errors());
+            return response()->json([
+                'status' => false,
+                'message' => 'Ocurrio un error al validar los datos',
+                'error' => $validator->errors()
+            ], 200);
         }
-
        $Transaction->quantity=$request->input('quantity');
        $Transaction->price=$request->input('price');
        $Transaction->id_product=$request->input('id_product');
