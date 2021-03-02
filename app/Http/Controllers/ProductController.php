@@ -53,9 +53,23 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
-        $Product = new Product;
+        $validator = Validator::make($request->all(), [
+            'id_category' => ['numeric','required'],
+            'name' => ['required', 'string', 'max:255'],
+            'decription' => ['required', 'string'],
+        ]); 
+        if ($validator->fails()) {
+            return redirect()->back()
+                    ->withInput()
+                    ->withErrors($validator->errors());
+            return response()->json([
+                'status' => false,
+                'message' => 'Ocurrio un error al validar los datos',
+                'error' => $validator->errors()
+            ], 200);
+        }
 
+        $Product = new Product;
         $Product->name=$request->input('name');
         $Product->date=$request->input('date');
         $Product->decription=$request->input('decription');
@@ -103,6 +117,22 @@ class ProductController extends Controller
     {
         //dd($request->all());
        $Product=Product::findOrfail($id);
+       $validator = Validator::make($request->all(), [
+            'id_category' => ['numeric','required'],
+            'name' => ['required', 'string', 'max:255'],
+            'decription' => ['required', 'string'],
+        ]); 
+        if ($validator->fails()) {
+            return redirect()->back()
+                    ->withInput()
+                    ->withErrors($validator->errors());
+            return response()->json([
+                'status' => false,
+                'message' => 'Ocurrio un error al validar los datos',
+                'error' => $validator->errors()
+            ], 200);
+        }
+
        $Product->name=$request->input("name");
        $Product->date=$request->input("date");
        $Product->decription=$request->input("decription");
@@ -126,12 +156,4 @@ class ProductController extends Controller
 
     }
 
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'decription' => ['required', 'string'],
-            'id_category' => ['number'],
-        ]);
-    }
 }

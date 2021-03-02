@@ -55,7 +55,7 @@ class TransactionController extends Controller
             'id_input' => ['numeric','required'],
             'quantity' => ['numeric','required'],
             'price' => ['numeric','required'],
-        ]);
+        ]); 
         if ($validator->fails()) {
             return redirect()->back()
                     ->withInput()

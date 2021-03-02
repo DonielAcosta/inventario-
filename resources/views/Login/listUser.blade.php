@@ -21,7 +21,7 @@
 				<input type="checkbox" class="form-check-input" id="dropdownCheck">
 				<label class="form-check-label" for="dropdownCheck">
 			        Remember me
-			    </label>
+			    </label>'
 			</div>
 			<button type="submit" class="btn btn-primary">Sign in</button>
 		</form>

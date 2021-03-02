@@ -10,18 +10,33 @@
 				@csrf
 				<div class="form-group">
 					<label for="quantity">Cantidad</label>
-					<input type="text" class="form-control" name="quantity" required maxlength="50">
+					<input type="text" class="form-control" name="quantity" id="quantity" required maxlength="50">
+
+					@if ($errors->has('quantity'))
+						{{ $errors->first('quantity') }}
+					@endif
+
 				</div>
 				<div class="form-group">
 					<label for="price">Precio</label>
-					<input type="text" class="form-control " name="price" required maxlength="50">
+					<input type="text" class="form-control " name="price" id="price" required maxlength="50">
+
+					@if ($errors->has('price'))
+						{{ $errors->first('price') }}
+					@endif
+
 				<div class="form-group">
 					<label for="id_product">Producto </label>
-					<select name="id_product" id="id_product" class="form-select" aria-label="Default select example" >
-						@foreach ($Product as $prod)
+					<select name="id_product" id="id_product" class="form-select"  aria-label="Default select example" >
 
+						@foreach ($Product as $prod)
 						<option value="{{ $prod->id }}">{{ $prod->name}}</option>
 						@endforeach
+
+						@if ($errors->has('id_product'))
+						{{ $errors->first('id_product') }}
+						@endif
+
 					</select>
 					
 				</div>
@@ -32,6 +47,10 @@
 						@foreach ($Stock as $st)
 							<option value="{{ $st->id }}">{{ $st->id}}</option>
 						@endforeach
+
+						@if ($errors->has('id_stock'))
+							{{ $errors->first('id_stock') }}
+						@endif
 					</select>	
 				</div>
 				<div class="form-group">
@@ -41,11 +60,17 @@
 						@foreach ($Input as $in)
 							<option value="{{ $in->id }}" >{{$in->id}}</option>
 						@endforeach
+
+						@if ($errors->has('id_input'))
+						{{ $errors->first('id_input') }}
+						@endif
+
 					</select>	
 				</div>
+				
 				<div class="form-group">
 					<input type="submit" class="btn btn-info" value="Guardar">
-					<a href="javascript:history.back()">Ir al listado</a>
+					<a href="javascript:history.back()">Volver</a>
 				</div>
 			</form>	
 			</div>

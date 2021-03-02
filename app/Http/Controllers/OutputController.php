@@ -44,7 +44,25 @@ class OutputController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+
+        $validator = Validator::make($request->all(), [
+            'id_user' => ['numeric','required'],
+            'id_stock' => ['numeric','required'],
+            'quantity' => ['numeric','required'],
+            'observation' => ['required', 'string', 'max:255'],
+        ]); 
+        if ($validator->fails()) {
+            return redirect()->back()
+                    ->withInput()
+                    ->withErrors($validator->errors());
+            return response()->json([
+                'status' => false,
+                'message' => 'Ocurrio un error al validar los datos',
+                'error' => $validator->errors()
+            ], 200);
+        }
+
         $Output = new Output;
 
         $Output->id_user=$request->input('id_user');
@@ -93,6 +111,22 @@ class OutputController extends Controller
     public function update(Request $request, $id)
     {
        $Output = Output::findOrfail($id);
+        $validator = Validator::make($request->all(), [
+            'id_user' => ['numeric','required'],
+            'id_stock' => ['numeric','required'],
+            'quantity' => ['numeric','required'],
+            'observation' => ['required', 'string', 'max:255'],
+        ]); 
+        if ($validator->fails()) {
+            return redirect()->back()
+                    ->withInput()
+                    ->withErrors($validator->errors());
+            return response()->json([
+                'status' => false,
+                'message' => 'Ocurrio un error al validar los datos',
+                'error' => $validator->errors()
+            ], 200);
+        }
 
        $Output->id_user=$request->input('id_user');
        $Output->id_stock=$request->input('id_stock');
@@ -115,16 +149,6 @@ class OutputController extends Controller
         $Output= Output::findOrfail($id);
         $Output->delete();
         return redirect()->route('Output.index');
-    }
-
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'id_user' => ['number'],
-            'id_stock' => ['number'],
-            'quantity' => ['number'],
-            'observation' => ['required', 'string', 'max:255'],
-        ]);
     }
 
 }

@@ -11,16 +11,23 @@
 				@method("PUT")
 				<div class="form-group">
 					<label for="name">Nombre</label>
-					<input type="text" class="form-control" name="name" required maxlength="50" value="{{$Category->name}}"> 
+					<input type="text" class="form-control" name="name" id="name" required maxlength="50" value="{{$Category->name}}"> 
+
+					@if ($errors->has('name'))
+						{{ $errors->first('name') }}
+					@endif
 				</div>
 				<div class="form-group">
 					<label for="description">Descripción</label>
-					<input type="text" class="form-control" name="description" required maxlength="150" value="{{$Category->description}}">
+					<input type="text" class="form-control" name="description" id="description" required maxlength="150" value="{{$Category->description}}">
+					@if ($errors->has('description'))
+						{{ $errors->first('description') }}
+					@endif
 				</div>
 				
 				<div class="form-group">
 					<input type="submit" class="btn btn-info" value="Guardar">
-					<a href="javascript:history.back()">Ir al listado</a>
+					<a href="javascript:history.back()">Volver</a>
 				</div>
 			</form>	
 			</div>

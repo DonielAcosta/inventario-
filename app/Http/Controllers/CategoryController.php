@@ -41,6 +41,22 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:255'],
+        ]); 
+        if ($validator->fails()) {
+            return redirect()->back()
+                    ->withInput()
+                    ->withErrors($validator->errors());
+            return response()->json([
+                'status' => false,
+                'message' => 'Ocurrio un error al validar los datos',
+                'error' => $validator->errors()
+            ], 200);
+        }
+
+
         $Category = new Category;
         $Category->name=$request->input('name');
         $Category->description=$request->input('description');
@@ -85,7 +101,22 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
          //dd($request->all());
-       $Category= Category::findOrfail($id);
+        $Category= Category::findOrfail($id);
+        $validator = Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:255'],
+        ]);
+        // dd($Transaction, $validator->errors());
+       if ($validator->fails()) {
+            return redirect()->back()
+                    ->withInput()
+                    ->withErrors($validator->errors());
+            return response()->json([
+                'status' => false,
+                'message' => 'Ocurrio un error al validar los datos',
+                'error' => $validator->errors()
+            ], 200);
+        }
 
        $Category->name=$request->input("name");
        $Category->description=$request->input("description");
@@ -109,11 +140,4 @@ class CategoryController extends Controller
 
     }
 
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:255'],
-        ]);
-    }
 }

@@ -48,6 +48,23 @@ class InputController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'id_user' => ['numeric','required'],
+            'id_supplier' => ['numeric','required'],
+            'whole' => ['numeric','required'],
+            'n_invoice' => ['numeric','required'],
+        ]); 
+        if ($validator->fails()) {
+            return redirect()->back()
+                    ->withInput()
+                    ->withErrors($validator->errors());
+            return response()->json([
+                'status' => false,
+                'message' => 'Ocurrio un error al validar los datos',
+                'error' => $validator->errors()
+            ], 200);
+        }
+
         $Input = new Input;
 
         $Input->id_user=$request->input('id_user');
@@ -98,6 +115,22 @@ class InputController extends Controller
     public function update(Request $request, $id)
     {
        $Input = Input::findOrfail($id);
+       $validator = Validator::make($request->all(), [
+            'id_user' => ['numeric','required'],
+            'id_supplier' => ['numeric','required'],
+            'whole' => ['numeric','required'],
+            'n_invoice' => ['numeric','required'],
+        ]); 
+        if ($validator->fails()) {
+            return redirect()->back()
+                    ->withInput()
+                    ->withErrors($validator->errors());
+            return response()->json([
+                'status' => false,
+                'message' => 'Ocurrio un error al validar los datos',
+                'error' => $validator->errors()
+            ], 200);
+        }
 
        $Input->id_user=$request->input('id_user');
        $Input->id_supplier=$request->input('id_supplier');
@@ -122,13 +155,4 @@ class InputController extends Controller
         return redirect()->route('Input.index');
     }
 
-      protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'id_user' => ['number'],
-            'id_supplier' => ['number'],
-            'whole' => ['number'],
-            'n_invoice' => ['number'],
-        ]);
-    }
 }

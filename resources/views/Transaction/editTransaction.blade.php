@@ -74,7 +74,7 @@
 				<div class="form-group">
 					<input type="submit" class="btn btn-primary" value="Guardar">
 
-					<a href="javascript:history.back()">Ir al listado</a>
+					<a href="javascript:history.back()">Volver</a>
 				</div>
 			</form>	
 			</div>

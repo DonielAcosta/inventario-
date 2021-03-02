@@ -48,6 +48,25 @@ class StockController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'id_product' => ['numeric','required'],
+            'id_sub_stock' => ['numeric','required'],
+            'observation' => ['required', 'string', 'max:255'],
+            'quantity' => ['numeric','required'],
+            
+        ]); 
+        if ($validator->fails()) {
+            return redirect()->back()
+                    ->withInput()
+                    ->withErrors($validator->errors());
+            return response()->json([
+                'status' => false,
+                'message' => 'Ocurrio un error al validar los datos',
+                'error' => $validator->errors()
+            ], 200);
+        }
+
+
         $Stock= new Stock;
         // dd($request->all());
         $Stock->quantity=$request->input('quantity');
@@ -96,6 +115,24 @@ class StockController extends Controller
     public function update(Request $request, $id)
     {
         $Stock= Stock::findOrfail($id);
+        $validator = Validator::make($request->all(), [
+            'id_product' => ['numeric','required'],
+            'id_sub_stock' => ['numeric','required'],
+            'observation' => ['required', 'string', 'max:255'],
+            'quantity' => ['numeric','required'],
+            
+        ]); 
+        if ($validator->fails()) {
+            return redirect()->back()
+                    ->withInput()
+                    ->withErrors($validator->errors());
+            return response()->json([
+                'status' => false,
+                'message' => 'Ocurrio un error al validar los datos',
+                'error' => $validator->errors()
+            ], 200);
+        }
+
 
         $Stock->quantity=$request->input('quantity');
         $Stock->observation=$request->input('observation');
@@ -118,14 +155,5 @@ class StockController extends Controller
         return redirect()->route('Stock.index');
     }
 
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'id_product' => ['number'],
-            'id_sub_stock' => ['number'],
-            'observation' => ['required', 'string'],
-            'quantity' => ['number'],
-            
-        ]);
-    }
+    
 }

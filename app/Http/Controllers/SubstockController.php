@@ -46,7 +46,23 @@ class SubstockController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'decription' => ['required', 'string'],
+            'id_warehouse' => ['numeric','required'],
+            
+        ]); 
+        if ($validator->fails()) {
+            return redirect()->back()
+                    ->withInput()
+                    ->withErrors($validator->errors());
+            return response()->json([
+                'status' => false,
+                'message' => 'Ocurrio un error al validar los datos',
+                'error' => $validator->errors()
+            ], 200);
+        }
+
         $Sub_Stock = new Sub_Stock;
 
         $Sub_Stock->id_warehouse=$request->input('id_warehouse');
@@ -93,6 +109,22 @@ class SubstockController extends Controller
     public function update(Request $request, $id)
     {
         $Sub_Stock =Sub_Stock::findOrfail($id);
+        $validator = Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'decription' => ['required', 'string'],
+            'id_warehouse' => ['numeric','required'],
+            
+        ]); 
+        if ($validator->fails()) {
+            return redirect()->back()
+                    ->withInput()
+                    ->withErrors($validator->errors());
+            return response()->json([
+                'status' => false,
+                'message' => 'Ocurrio un error al validar los datos',
+                'error' => $validator->errors()
+            ], 200);
+        }
 
         $Sub_Stock->id_warehouse=$request->input('id_warehouse');
         $Sub_Stock->name=$request->input('name');
@@ -114,16 +146,6 @@ class SubstockController extends Controller
         $Sub_Stock= Sub_Stock::findOrfail($id);
         $Sub_Stock->delete();
         return redirect()->route('Sub_Stock.index');
-    }
-
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'decription' => ['required', 'string'],
-            'id_warehouse' => ['number'],
-
-        ]);
     }
 
 }
